@@ -1,0 +1,9 @@
+/* _utils.scss */
+
+@property --conic-range { // conic-gradient 각도
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+/* _utils.scss */

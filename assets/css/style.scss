@@ -1,0 +1,48 @@
+@use 'sass:list';
+@use 'sass:math';
+
+// 0. Reset
+@import
+    'vendors/normalize'
+;
+
+// 1. Base
+@import
+    'base/default' // Default
+;
+
+// 2. Abstracts
+@import
+    'abstracts/variables', // Global Variables
+    'abstracts/functions', // SASS Functions
+    'abstracts/keyframes' // Animations
+;
+
+// 3. Helpers
+@import
+    'helpers/utils'
+;
+
+// 4. Themes
+@import
+    // 'themes/lightScheme', // Prefered Scheme - Light (Not In Use)
+    // 'themes/darkScheme', // Prefered Scheme - Dark (Not In Use)
+    'themes/defaultColor' // Default Color
+;
+
+// 5. Layouts
+@import
+    'layouts/commons', // Commons
+    'layouts/headers', // Headers
+    'layouts/mainPage', // Main Page Layout
+    'layouts/subPages', // Sub Page Default Layout
+    'layouts/footers' // Footers
+;
+
+// 6. Views
+
+// 7. Components
+@import
+    'components/buttons',
+    'components/formElements'
+;

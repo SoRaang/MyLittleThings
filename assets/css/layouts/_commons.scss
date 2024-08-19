@@ -1,0 +1,23 @@
+/* _commons.scss */
+
+#wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#contentView {
+
+}
+
+.inner-wrapper {
+    margin-inline: auto;
+    padding-inline: .4rem;
+    width: min(100% - 3.2rem, 48rem);
+}
+
+.icons {
+    width: 24px;
+}
+
+/* _commons.scss */
