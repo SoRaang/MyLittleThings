@@ -1,0 +1,50 @@
+/* _light.scss */
+
+@media (prefers-color-scheme: light){
+    // 사용자 OS의 설정된 선호 색상에 맞추는 미디어 쿼리
+
+    :root {
+        --clr-min: 255 255 255; // 최소 대비 (컬러 스키마에 대해)
+        --clr-max: 0 0 0; // 최대 대비 (컬러 스키마에 대해)
+
+        --clr-theme: var(--clr-tint-10); // 메인 컬러
+        --clr-background: var(--clr-surface-100); // 배경
+
+        --clr-surface-100: 245 245 245; // 표면 100%
+        --clr-surface-75: 230 230 230; // 표면 75%
+        --clr-surface-50: 208 208 208; // 표면 50%
+        --clr-surface-25: 184 184 184; // 표면 25%
+        --clr-surface-10: 167 167 167; // 표면 10%
+        --clr-surface-5: 133 133 133; // 표면 5%
+
+        --clr-tint-100: 56 43 240; // 하이라이트 100%
+        --clr-tint-75: 94 67 243; // 하이라이트 75%
+        --clr-tint-50: 122 90 245; // 하이라이트 50%
+        --clr-tint-25: 145 113 248; // 하이라이트 25%
+        --clr-tint-10: 166 136 250; // 하이라이트 10%
+        --clr-tint-5: 186 159 251; // 하이라이트 5%
+
+        --clr-text: 51 51 51; // 문자
+        --clr-text-highlight: 51 51 51; // 하이라이트 된 문자
+        --clr-text-on-tint: 255 255 255; // 틴트 배경 위의 문자
+        --clr-text-on-surface: ; // 표면 배경 위의 문자
+        --clr-text-on-invert: ; // 반전 배경 위의 문자
+        --clr-text-disabled: ; // 비활성 문자
+
+        --clr-alert: 227 23 10; // 에러
+        --clr-warn: 247 179 43; // 경고
+        --clr-info: 169 229 187; // 정보
+        --clr-clear: 35 206 107; // 안전
+        --clr-unable: ; // 불가능
+
+        --clr-if-100: ; // 인터페이스 표면 100%
+        --clr-if-75: ; // 인터페이스 표면 75%
+        --clr-if-50: ; // 인터페이스 표면 50%
+        --clr-if-25: ; // 인터페이스 표면 25%
+        --clr-if-10: ; // 인터페이스 표면 10%
+        --clr-if-5: ; // 인터페이스 표면 5%
+        --clr-if-disabled: ; // 비활성 인터페이스
+    }
+}
+
+/* _light.scss */

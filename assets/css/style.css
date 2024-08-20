@@ -419,6 +419,86 @@ a:hover, a:focus, a:active {
   initial-value: 0deg;
 }
 /* _utils.scss */
+/* _light.scss */
+@media (prefers-color-scheme: light) {
+  :root {
+    --clr-min: 255 255 255;
+    --clr-max: 0 0 0;
+    --clr-theme: var(--clr-tint-10);
+    --clr-background: var(--clr-surface-100);
+    --clr-surface-100: 245 245 245;
+    --clr-surface-75: 230 230 230;
+    --clr-surface-50: 208 208 208;
+    --clr-surface-25: 184 184 184;
+    --clr-surface-10: 167 167 167;
+    --clr-surface-5: 133 133 133;
+    --clr-tint-100: 56 43 240;
+    --clr-tint-75: 94 67 243;
+    --clr-tint-50: 122 90 245;
+    --clr-tint-25: 145 113 248;
+    --clr-tint-10: 166 136 250;
+    --clr-tint-5: 186 159 251;
+    --clr-text: 51 51 51;
+    --clr-text-highlight: 51 51 51;
+    --clr-text-on-tint: 255 255 255;
+    --clr-text-on-surface: ;
+    --clr-text-on-invert: ;
+    --clr-text-disabled: ;
+    --clr-alert: 227 23 10;
+    --clr-warn: 247 179 43;
+    --clr-info: 169 229 187;
+    --clr-clear: 35 206 107;
+    --clr-unable: ;
+    --clr-if-100: ;
+    --clr-if-75: ;
+    --clr-if-50: ;
+    --clr-if-25: ;
+    --clr-if-10: ;
+    --clr-if-5: ;
+    --clr-if-disabled: ;
+  }
+}
+/* _light.scss */
+/* _dark.scss */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --clr-min: 0 0 0;
+    --clr-max: 255 255 255;
+    --clr-theme: var(--clr-tint-10);
+    --clr-background: var(--clr-surface-100);
+    --clr-surface-100: 26 22 37;
+    --clr-surface-75: 47 43 59;
+    --clr-surface-50: 70 66 79;
+    --clr-surface-25: 94 90 102;
+    --clr-surface-10: 118 115 126;
+    --clr-surface-5: 144 141 150;
+    --clr-tint-100: 56 43 240;
+    --clr-tint-75: 94 67 243;
+    --clr-tint-50: 122 90 245;
+    --clr-tint-25: 145 113 248;
+    --clr-tint-10: 166 136 250;
+    --clr-tint-5: 186 159 251;
+    --clr-text: 255 255 255;
+    --clr-text-highlight: 255 255 255;
+    --clr-text-on-tint: 0 0 0;
+    --clr-text-on-surface: ;
+    --clr-text-on-invert: ;
+    --clr-text-disabled: ;
+    --clr-alert: 227 23 10;
+    --clr-warn: 247 179 43;
+    --clr-info: 169 229 187;
+    --clr-clear: 35 206 107;
+    --clr-unable: ;
+    --clr-if-100: ;
+    --clr-if-75: ;
+    --clr-if-50: ;
+    --clr-if-25: ;
+    --clr-if-10: ;
+    --clr-if-5: ;
+    --clr-if-disabled: ;
+  }
+}
+/* _dark.scss */
 /* _defaultColor.scss */
 :root {
   --clr-min: 0 0 0;
@@ -701,7 +781,8 @@ a:hover, a:focus, a:active {
   background-color: rgb(var(--clr-surface-10));
 }
 .todo-item[data-item-imp=important] {
-  background-color: black;
+  background-color: rgb(var(--clr-min)/0.75);
+  background-image: linear-gradient(135deg, rgb(var(--clr-warn)) 1rem, transparent 1rem);
   outline: 1px solid rgb(var(--clr-warn));
   box-shadow: 0 0 0.5rem rgb(var(--clr-warn)/0.25);
 }
@@ -918,7 +999,7 @@ a:hover, a:focus, a:active {
   border-inline-start: 1px solid rgba(0, 0, 0, 0.1);
   border-inline-end: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 50rem;
-  background-color: rgb(var(--clr-surface-50));
+  background-color: rgb(62, 17, 145);
   transition: 0.3s;
   cursor: pointer;
 }

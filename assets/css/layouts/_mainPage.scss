@@ -50,7 +50,8 @@
     }
 
     &[data-item-imp="important"] {
-        background-color: black;
+        background-color: rgb(var(--clr-min) / .75);
+        background-image: linear-gradient(135deg, rgb(var(--clr-warn)) 1rem, transparent 1rem);
         outline: 1px solid rgb(var(--clr-warn));
         box-shadow: 0 0 .5rem rgb(var(--clr-warn) / .25);
 

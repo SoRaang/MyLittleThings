@@ -13,7 +13,7 @@ const labelCompleteTodos = document.querySelector('.label-complete-todos');
 
 // ---------- MyLittleThings 클래스 시작 ----------
 
-class MyLittleThings { // 근본적인 아이템 배열 구조에 대한 재설계 필요. 배열을 가지고 와서 매 행동마다 다시 로컬 스토리지로 돌려보내는 방법이 필요하다.
+class MyLittleThings {
     constructor(targetEl) {
         this.target = targetEl // draw()를 실행할 대상 DOM 엘리먼트
     }
@@ -26,7 +26,7 @@ class MyLittleThings { // 근본적인 아이템 배열 구조에 대한 재설�
         localStorage.setItem('mltTodoList', JSON.stringify(dataArray));
     }
 
-    countTodos(dataArray) { // footer 부분에 할 일 갯수를 삽입하는 기능
+    countTodos(dataArray) { // footer 부분에 할 일 갯수를 출력하는 기능
         labelTotalTodos.textContent = dataArray.filter(n => n.deleted === false).length;
         labelCompleteTodos.textContent = dataArray.filter(n => n.status === 'done' && n.deleted === false).length;
     }
@@ -48,7 +48,7 @@ class MyLittleThings { // 근본적인 아이템 배열 구조에 대한 재설�
             return;
         }
 
-        this.countTodos(originArray);
+        this.countTodos(originArray); // 원본 배열의 갯수를 footer 부분에 출력
 
         let drawData = originArray.map((data, index) => { // 목록을 출력하기 위해 배열을 정리하고, DOM 요소를 만들어 객체에 추가한다.
             const dataElement = document.createElement('li');
@@ -112,20 +112,20 @@ class MyLittleThings { // 근본적인 아이템 배열 구조에 대한 재설�
                         </div>
                     </div>
                 </div>
-            `;
+            `; // 프레임워크와 유사한 방식으로 조건에 따라 렌더링할 DOM 엘리먼트를 만든다.
 
             const chkIsDone = dataElement.querySelector('.button-todo-item-done');
             const btnEdit = dataElement.querySelector('.button-todo-item-edit');
             const btnRestore = dataElement.querySelector('.button-todo-item-restore');
             const btnDelete = dataElement.querySelector('.button-todo-item-delete');
 
-            chkIsDone.addEventListener('click', (e) => this.updateItem(data, 'change'));
+            chkIsDone.addEventListener('click', () => this.updateItem(data, 'change'));
 
-            btnEdit?.addEventListener('click', (e) => this.updateItem(data, 'edit'));
+            btnEdit?.addEventListener('click', () => this.updateItem(data, 'edit'));
 
-            btnRestore?.addEventListener('click', (e) => this.restoreItem(data));
+            btnRestore?.addEventListener('click', () => this.restoreItem(data));
 
-            btnDelete.addEventListener('click', (e) => this.removeItem(data));
+            btnDelete.addEventListener('click', () => this.removeItem(data));
 
             data.itemIndex = index;
             data.element = dataElement;
@@ -308,6 +308,7 @@ const modalUserSettings = document.getElementById('modalUserSettings');
 const txtUserName = document.getElementById('txtUserName');
 const btnModalConfirm = document.getElementById('btnModalConfirm');
 const btnModalClose = document.getElementById('btnModalClose');
+const chkToggleColor = document.getElementById('chkToggleColor');
 
 modalUserSettings.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
@@ -330,6 +331,9 @@ btnModalClose.addEventListener('click', () => {
 function insertUserName() {
     if (txtUserName.value.replace(spaceCheck, '') === '') {
         createAlert('이름은 반드시 입력해야 해요!', 'error');
+
+        txtUserName.value = '';
+        txtUserName.focus();
 
         return;
     }
