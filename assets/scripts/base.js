@@ -24,7 +24,7 @@ class MyLittleThings { // 근본적인 아이템 배열 구조에 대한 재설�
 
     countTodos(dataArray) { // footer 부분에 할 일 갯수를 삽입하는 기능
         labelTotalTodos.textContent = dataArray.filter(n => n.deleted === false).length;
-        labelCompleteTodos.textContent = dataArray.filter(n => n.status === 'done').length;
+        labelCompleteTodos.textContent = dataArray.filter(n => n.status === 'done' && n.deleted === false).length;
     }
 
     draw(drawType) { // 리스트 출력
