@@ -161,8 +161,11 @@
     }
 
     &.current {
-        background-image: linear-gradient(to top, rgb(var(--clr-theme)) .2rem, transparent .2rem);
+        background-image:
+            linear-gradient(to top, rgb(var(--clr-theme)) .2rem, transparent .2rem),
+            linear-gradient(to top, rgb(var(--clr-theme) / .1), transparent);
         font-weight: 900;
+        text-shadow: 0 .1rem .1rem rgb(0 0 0 / .75);
         opacity: 1;
     }
 }

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
 /*
 Document
@@ -646,8 +647,9 @@ a:hover, a:focus, a:active {
   opacity: 0.75;
 }
 .nav-tab-item.current {
-  background-image: linear-gradient(to top, rgb(var(--clr-theme)) 0.2rem, transparent 0.2rem);
+  background-image: linear-gradient(to top, rgb(var(--clr-theme)) 0.2rem, transparent 0.2rem), linear-gradient(to top, rgb(var(--clr-theme)/0.1), transparent);
   font-weight: 900;
+  text-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.75);
   opacity: 1;
 }
 
@@ -855,6 +857,9 @@ a:hover, a:focus, a:active {
 }
 
 #modalContent {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1.2rem;
   padding: 0.8rem;
   border-block: 1px solid rgb(var(--clr-theme)/0.1);
 }
@@ -898,6 +903,54 @@ a:hover, a:focus, a:active {
   border-color: rgb(var(--clr-tint-25));
   background-color: rgb(var(--clr-min)/0.5);
   outline: 0.15rem solid rgb(var(--clr-tint-25)/0.25);
+}
+
+#chkToggleColor {
+  display: none;
+}
+#chkToggleColor + label {
+  display: block;
+  position: relative;
+  width: 2rem;
+  height: 1rem;
+  border-block-start: 1px solid rgba(0, 0, 0, 0.1);
+  border-block-end: 1px solid rgba(255, 255, 255, 0.1);
+  border-inline-start: 1px solid rgba(0, 0, 0, 0.1);
+  border-inline-end: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50rem;
+  background-color: rgb(var(--clr-surface-50));
+  transition: 0.3s;
+  cursor: pointer;
+}
+#chkToggleColor + label::before {
+  display: block;
+  position: absolute;
+  inset-block: 0.1rem;
+  inset-inline-start: 0.1rem;
+  right: auto;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+  background-color: yellow;
+  transition: 0.3s;
+  content: "";
+}
+#chkToggleColor + label::after {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: calc(100% + 0.4rem);
+  margin-block: auto;
+  height: -moz-fit-content;
+  height: fit-content;
+  content: "어둡게";
+}
+#chkToggleColor:checked + label {
+  background-color: rgb(var(--clr-warn));
+}
+#chkToggleColor:checked + label::before {
+  translate: calc(100% + 0.3rem);
+}
+#chkToggleColor:checked + label::after {
+  content: "밝게";
 }
 
 #modalButtonContainer {

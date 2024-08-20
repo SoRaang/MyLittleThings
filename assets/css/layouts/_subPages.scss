@@ -24,6 +24,9 @@
 }
 
 #modalContent {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1.2rem;
     padding: .8rem;
     border-block: 1px solid rgb(var(--clr-theme) / .1);
 }
@@ -71,6 +74,61 @@
         border-color: rgb(var(--clr-tint-25));
         background-color: rgb(var(--clr-min) / .5);
         outline: .15rem solid rgb(var(--clr-tint-25) / .25);
+    }
+}
+
+#chkToggleColor {
+    display: none;
+
+    & + label {
+        display: block;
+        position: relative;
+        width: 2rem;
+        height: 1rem;
+        border: {
+            block-start: 1px solid rgb(0 0 0 / .1);
+            block-end: 1px solid rgb(255 255 255 / .1);
+            inline-start: 1px solid rgb(0 0 0 / .1);
+            inline-end: 1px solid rgb(255 255 255 / .1);
+        }
+        border-radius: 50rem;
+        background-color: rgb(var(--clr-surface-50));
+        transition: .3s;
+        cursor: pointer;
+
+        &::before {
+            display: block;
+            position: absolute;
+            inset-block: .1rem;
+            inset-inline-start: .1rem;
+            right: auto;
+            aspect-ratio: 1 / 1;
+            border-radius: 100%;
+            background-color: yellow;
+            transition: .3s;
+            content: '';
+        }
+
+        &::after {
+            position: absolute;
+            inset-block: 0;
+            inset-inline-start: calc(100% + .4rem);
+            margin-block: auto;
+            height: fit-content;
+            content: '어둡게';
+        }
+    }
+
+    &:checked + label {
+        background-color: rgb(var(--clr-warn));
+
+        &::before {
+            translate: calc(100% + .3rem);
+        }
+
+        &::after {
+            content: '밝게';
+        }
     }
 }
 

@@ -397,7 +397,7 @@ function createAlert(msg, warnType) {
  * 1. localStorage에서 가지고 오는 배열을 직접적으로 조작할 수 없기 때문에 매 조작마다 배열 재생성과 리로드 필요 (해결)
  * 2. 내용 수정 어려움 (해결)
  * 3. 사용자 정보 입력받는 모달 미완성 (해결)
- * 4. 색상 테마 전환은 시간적으로 어려울 것 같다.
+ * 4. 색상 테마 전환은 시간적으로 어려울 것 같다. (외형만 추가)
  */
 
 console.log('%cMyLittleThings', 'font-size: 48px; color: slateblue; font-family: Arial; font-weight: 900;');
