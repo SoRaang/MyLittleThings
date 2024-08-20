@@ -353,7 +353,7 @@ function insertUserName() {
     createAlert('성공적으로 저장되었어요.', 'good');
 }
 
-// ---------- 초기 사용자 정보 입력 ----------
+// ---------- 초기 사용자 정보 불러오기 또는 입력 ----------
 
 const userNameLabel = document.querySelector('.label-user-name');
 const modalUserNameLabel = document.querySelector('.modal-label-user-name');
