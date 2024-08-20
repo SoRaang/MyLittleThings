@@ -2,6 +2,10 @@
  * To-do List 관리를 위한 클래스 (MyLittleThings)
  */
 
+// ---------- 공백 제거 정규표현식 ----------
+
+const spaceCheck = /^\s+|\s+$/g;
+
 // ---------- 할 일 갯수 세기 엘리먼트 ----------
 
 const labelTotalTodos = document.querySelector('.label-total-todos');
@@ -141,6 +145,18 @@ class MyLittleThings { // 근본적인 아이템 배열 구조에 대한 재설�
             }
         });
 
+        if ((drawType === 'Pending' || drawType === 'Todo') && this.target.childElementCount === 0) {
+            this.target.innerHTML = `
+                <li class="empty-list">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icons big-icon icon-no-document" fill="currentColor">
+                        <path d="M15 4H5V20H19V8H15V4ZM3 2.9918C3 2.44405 3.44749 2 3.9985 2H16L20.9997 7L21 20.9925C21 21.5489 20.5551 22 20.0066 22H3.9934C3.44476 22 3 21.5447 3 21.0082V2.9918ZM11 15H13V17H11V15ZM11 7H13V13H11V7Z"></path>
+                    </svg>
+
+                    <p>아직은 할 일이 없어요.</p>
+                </li>
+            `;
+        }
+
         if (drawType === 'Deleted' && this.target.childElementCount === 0) { // 빈 휴지통을 따로 표현하기 위한 부분
             this.target.innerHTML = `
                 <li class="empty-list">
@@ -155,8 +171,10 @@ class MyLittleThings { // 근본적인 아이템 배열 구조에 대한 재설�
     }
 
     addItem(isImportant, textOf) { // 신규 아이템 추가
-        if (!!textOf.value === false) {
+        if (textOf.value.replace(spaceCheck, '') === '') {
             createAlert('입력된 내용이 없어요.', 'error');
+
+            textOf.value = '';
 
             return;
         }
@@ -310,7 +328,7 @@ btnModalClose.addEventListener('click', () => {
 });
 
 function insertUserName() {
-    if (!!txtUserName.value.trim() === false) {
+    if (txtUserName.value.replace(spaceCheck, '') === '') {
         createAlert('이름은 반드시 입력해야 해요!', 'error');
 
         return;
@@ -339,8 +357,8 @@ const modalUserNameLabel = document.querySelector('.modal-label-user-name');
 const userData = localStorage.getItem('mltUser');
 
 if (!userData) {
-    userNameLabel.textContent = '(저장되지 않음)';
-    modalUserNameLabel.textContent = '(저장되지 않음)';
+    userNameLabel.textContent = '(저장된 이름 없음)';
+    modalUserNameLabel.textContent = '(저장된 이름 없음)';
 
     btnModalClose.style.display = 'none';
 
