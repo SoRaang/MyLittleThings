@@ -30,7 +30,7 @@ class MyLittleThings { // 근본적인 아이템 배열 구조에 대한 재설�
     draw(drawType) { // 리스트 출력
         const originArray = this.getLocalData();
 
-        if (!!originArray === false) { // 할 일이 없을 때는 플레이스홀더 출력
+        if (!!originArray === false || originArray.length === 0) { // 할 일이 없을 때는 플레이스홀더 출력
             this.target.innerHTML = `
                 <li class="empty-list">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icons big-icon icon-no-document" fill="currentColor">
