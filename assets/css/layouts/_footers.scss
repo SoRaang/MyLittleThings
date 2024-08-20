@@ -1,7 +1,47 @@
 /* _footers.scss */
 
 #footPrimary { // 메인 푸터
+    position: sticky;
+    inset-block-end: 0;
+    inset-inline: 0;
+    padding-block: 1rem;
+    border-block-start: 1px solid rgb(var(--clr-theme) / .1);
+    background-color: rgb(var(--clr-surface-100) / .5);
+    backdrop-filter: blur(.4rem);
+    z-index: 49999;
+}
 
+.info-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-labels {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+
+    &:first-child {
+        > span {
+            background-color: rgb(var(--clr-theme));
+        }
+    }
+
+    &:last-child {
+        > span {
+            background-color: rgb(var(--clr-clear));
+        }
+    }
+
+    > span {
+        display: block;
+        padding: .2rem .6rem;
+        border-radius: 50rem;
+        color: rgb(0 0 0 / .75);
+        font-size: var(--fnt-sm);
+        font-weight: 900;
+    }
 }
 
 /* _footers.scss */

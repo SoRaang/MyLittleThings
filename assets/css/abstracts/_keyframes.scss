@@ -1,5 +1,15 @@
 /* _keyframes.scss */
 
+@keyframes hideAlert {
+    to {
+        inset-block-end: -150%;
+    }
+}
 
+@keyframes gearRoll {
+    to {
+        rotate: 360deg;
+    }
+}
 
 /* _keyframes.scss */

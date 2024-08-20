@@ -24,7 +24,7 @@
                                 <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM7 12C7 14.7614 9.23858 17 12 17C14.7614 17 17 14.7614 17 12H15C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12H7Z"></path>
                             </svg>
 
-                            <p id="labelUserName">안녕하세요, <span>홍길동</span>님</p>
+                            <p id="labelUserName">안녕하세요, <span class="label-user-name">홍길동</span>님</p>
                         </div> <!-- #labelGreet -->
 
                         <button type="button" id="btnSettings">
@@ -59,16 +59,16 @@
 
                     <nav id="navPrimary">
                         <ul id="navList">
-                            <li class="nav-tab-item current">
-                                <a href="" class="nav-tab-link" data-tab-target="all">전체</a>
+                            <li class="nav-tab-item current" data-tab-target="Todo">
+                                <a href="javascript:void(0)" class="nav-tab-link">전체</a>
                             </li>
 
-                            <li class="nav-tab-item">
-                                <a href="" class="nav-tab-link" data-tab-target="pending">미완료만 보기</a>
+                            <li class="nav-tab-item" data-tab-target="Pending">
+                                <a href="javascript:void(0)" class="nav-tab-link">미완료만 보기</a>
                             </li>
 
-                            <li class="nav-tab-item">
-                                <a href="" class="nav-tab-link" data-tab-target="deleted">휴지통</a>
+                            <li class="nav-tab-item" data-tab-target="Deleted">
+                                <a href="javascript:void(0)" class="nav-tab-link">휴지통</a>
                             </li>
                         </ul> <!-- #navList -->
                     </nav> <!--#navPrimary -->
@@ -77,87 +77,45 @@
 
             <div id="contentView">
                 <ul id="todoList" class="inner-wrapper">
-                    <li class="todo-item" data-item-index="0" data-item-imp="important">
-                        <button type="button" class="button-todo-item-done" title="완료된 할 일로 표시">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icons icon-checked" fill="currentColor">
-                                <path d="M9.9997 15.1709L19.1921 5.97852L20.6063 7.39273L9.9997 17.9993L3.63574 11.6354L5.04996 10.2212L9.9997 15.1709Z"></path>
-                            </svg>
-                        </button>
+                    <li class="empty-list">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icons big-icon icon-no-document" fill="currentColor">
+                            <path d="M15 4H5V20H19V8H15V4ZM3 2.9918C3 2.44405 3.44749 2 3.9985 2H16L20.9997 7L21 20.9925C21 21.5489 20.5551 22 20.0066 22H3.9934C3.44476 22 3 21.5447 3 21.0082V2.9918ZM11 15H13V17H11V15ZM11 7H13V13H11V7Z"></path>
+                        </svg>
 
-                        <div class="todo-item-aligner">
-                            <div class="todo-label-container">
-                                <p class="todo-label">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque, numquam consectetur. Esse, accusantium debitis, molestias rerum laudantium minus ea sit porro unde labore consequatur libero. Tenetur autem consequuntur esse repellat.
-                                </p>
-
-                                <div class="todo-status">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icons icon-important-blank" fill="currentColor">
-                                        <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 15H13V17H11V15ZM11 7H13V13H11V7Z"></path>
-                                    </svg>
-                                </div>
-                            </div>
-
-                            <div class="todo-button-container">
-                                <div class="todo-buttons general">
-                                    <button type="button" class="button-todo-item-edit" title="내용 수정">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icons icon-edit" fill="currentColor">
-                                            <path d="M6.41421 15.89L16.5563 5.74785L15.1421 4.33363L5 14.4758V15.89H6.41421ZM7.24264 17.89H3V13.6473L14.435 2.21231C14.8256 1.82179 15.4587 1.82179 15.8492 2.21231L18.6777 5.04074C19.0682 5.43126 19.0682 6.06443 18.6777 6.45495L7.24264 17.89ZM3 19.89H21V21.89H3V19.89Z"></path>
-                                        </svg>
-                                    </button>
-
-                                    <button type="button" class="button-todo-item-delete" title="이 할 일 삭제">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icons icon-delete" fill="currentColor">
-                                            <path d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </li> <!-- todo-item template -->
-
-                    <li class="todo-item" data-item-index="0" data-item-status="normal">
-                        <button type="button" class="button-todo-item-done" title="완료된 할 일로 표시">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icons icon-checked" fill="currentColor">
-                                <path d="M9.9997 15.1709L19.1921 5.97852L20.6063 7.39273L9.9997 17.9993L3.63574 11.6354L5.04996 10.2212L9.9997 15.1709Z"></path>
-                            </svg>
-                        </button>
-
-                        <div class="todo-item-aligner">
-                            <div class="todo-label-container">
-                                <p class="todo-label">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque, numquam consectetur. Esse, accusantium debitis, molestias rerum laudantium minus ea sit porro unde labore consequatur libero. Tenetur autem consequuntur esse repellat.
-                                </p>
-
-                                <div class="todo-status">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icons icon-important-blank" fill="currentColor">
-                                        <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 15H13V17H11V15ZM11 7H13V13H11V7Z"></path>
-                                    </svg>
-                                </div>
-                            </div>
-
-                            <div class="todo-button-container">
-                                <div class="todo-buttons general">
-                                    <button type="button" class="button-todo-item-edit" title="내용 수정">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icons icon-edit" fill="currentColor">
-                                            <path d="M6.41421 15.89L16.5563 5.74785L15.1421 4.33363L5 14.4758V15.89H6.41421ZM7.24264 17.89H3V13.6473L14.435 2.21231C14.8256 1.82179 15.4587 1.82179 15.8492 2.21231L18.6777 5.04074C19.0682 5.43126 19.0682 6.06443 18.6777 6.45495L7.24264 17.89ZM3 19.89H21V21.89H3V19.89Z"></path>
-                                        </svg>
-                                    </button>
-
-                                    <button type="button" class="button-todo-item-delete" title="이 할 일 삭제">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icons icon-delete" fill="currentColor">
-                                            <path d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </li> <!-- todo-item template -->
+                        <p>아직은 할 일이 없어요.</p>
+                    </li>
                 </ul> <!-- #todoList -->
             </div> <!-- #contentView -->
 
+            <footer id="footPrimary">
+                <div class="info-display inner-wrapper">
+                    <div class="info-labels">전체 할 일 <span class="label-total-todos">0</span></div>
+
+                    <div class="info-labels">완료된 할 일 <span class="label-complete-todos">0</span></div>
+                </div>
+            </footer> <!-- #footPrimary -->
+
             <dialog id="modalUserSettings">
-                모달
-                <button type="button" id="btnModalClose">닫기</button>
+                <div id="modalTitle">
+                    <h1>사용자 설정</h1>
+                </div> <!-- #modalTitle -->
+
+                <div id="modalContent">
+                    <div class="modal-section">
+                        <h4 class="modal-section-title">사용자 이름 변경</h4>
+
+                        <div class="modal-section-content">
+                            <p class="modal-section-description">현재 사용자 이름은 "<span class="modal-label-user-name"></span>" 입니다.</p>
+
+                            <input type="text" id="txtUserName" placeholder="이름을 입력하세요..." minlength="2" maxlength="12" required>
+                        </div>
+                    </div>
+                </div> <!-- #modalContent -->
+
+                <div id="modalButtonContainer">
+                    <button type="button" id="btnModalConfirm">변경사항 저장</button>
+                    <button type="button" id="btnModalClose">닫기</button>
+                </div> <!-- #modalButtonContainer -->
             </dialog> <!-- #modalUserSettings -->
         </div> <!-- #wrap -->
 

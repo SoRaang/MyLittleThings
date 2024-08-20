@@ -36,6 +36,15 @@
     background-color: transparent;
     color: inherit;
     cursor: pointer;
+    transition: .15s;
+
+    &:hover {
+        background-color: rgb(var(--clr-tint-75));
+
+        > .icons {
+            animation: gearRoll .5s ease-out forwards;
+        }
+    }
 }
 
 #secInput {

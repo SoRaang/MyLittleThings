@@ -1,5 +1,101 @@
 /* _subPages.scss */
 
+#modalUserSettings {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    width: min(100% - 1.6rem, 24rem);
+    height: fit-content;
+    border: 1px solid rgb(var(--clr-theme) / .1);
+    border-radius: .4rem;
+    background-color: rgb(var(--clr-surface-100));
+    box-shadow: 0 1.2rem 2.4rem rgb(0 0 0 / .25);
+    color: rgb(var(--clr-max));
 
+    &::backdrop {
+        background-color: rgb(var(--clr-surface-100) / .5);
+    }
+}
+
+#modalTitle {
+    padding: .8rem;
+    font-size: var(--fnt-title-sm);
+    font-weight: 900;
+}
+
+#modalContent {
+    padding: .8rem;
+    border-block: 1px solid rgb(var(--clr-theme) / .1);
+}
+
+.modal-section {
+
+}
+
+.modal-section-title {
+    margin-block-end: .8rem;
+    font-size: var(--fnt-lg);
+    font-weight: 700;
+}
+
+.modal-section-content {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: .4rem;
+    margin-inline-start: .2rem;
+    padding-block: .2rem;
+    padding-inline-start: .6rem;
+    border-inline-start: .2rem solid rgb(var(--clr-tint-75) / .5);
+}
+
+.modal-section-description {
+    color: rgb(var(--clr-max) / .5);
+}
+
+.modal-label-user-name {
+    color: rgb(var(--clr-max));
+    font-weight: 900;
+}
+
+#txtUserName {
+    padding-inline: .4rem;
+    width: 100%;
+    height: 1.8rem;
+    border: 1px solid rgb(var(--clr-surface-10) / .2);
+    border-radius: .4rem;
+    background-color: rgb(var(--clr-min) / .2);
+    color: rgb(var(--clr-max));
+    transition: .15s;
+
+    &:focus {
+        border-color: rgb(var(--clr-tint-25));
+        background-color: rgb(var(--clr-min) / .5);
+        outline: .15rem solid rgb(var(--clr-tint-25) / .25);
+    }
+}
+
+#modalButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+    gap: .4rem;
+    padding: .6rem .8rem;
+
+    button {
+        padding-inline: 1rem;
+        height: 1.8rem;
+        border: 0;
+        border-radius: .4rem;
+        background-color: rgb(var(--clr-theme));
+        color: rgb(var(--clr-surface-100));
+        font-weight: 900;
+        transition: .15s;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgb(var(--clr-tint-75));
+            color: rgb(var(--clr-max));
+        }
+    }
+}
 
 /* _subPages.scss */

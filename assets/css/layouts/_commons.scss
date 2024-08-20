@@ -20,4 +20,36 @@
     width: 24px;
 }
 
+#customAlert {
+    position: fixed;
+    inset-block-end: 5vh;
+    inset-inline: 0;
+    margin: auto;
+    padding: 1.5rem;
+    border: 1px solid rgb(var(--clr-tint-10) / .5);
+    border-radius: .8rem;
+    background-color: rgb(var(--clr-min) / .75);
+    backdrop-filter: blur(.4rem);
+    font-size: var(--fnt-lg);
+    font-weight: 700;
+    text-align: center;
+    z-index: 50000;
+
+    &.error {
+        border-color: rgb(var(--clr-alert) / .5);
+    }
+
+    &.warn {
+        border-color: rgb(var(--clr-warn) / .5);
+    }
+
+    &.good {
+        border-color: rgb(var(--clr-clear) / .5);
+    }
+
+    &.hide {
+        animation: hideAlert 1s forwards;
+    }
+}
+
 /* _commons.scss */

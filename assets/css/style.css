@@ -400,6 +400,16 @@ a:hover, a:focus, a:active {
 /* _functions.scss */
 /* _functions.scss */
 /* _keyframes.scss */
+@keyframes hideAlert {
+  to {
+    inset-block-end: -150%;
+  }
+}
+@keyframes gearRoll {
+  to {
+    rotate: 360deg;
+  }
+}
 /* _keyframes.scss */
 /* _utils.scss */
 @property --conic-range {
@@ -464,6 +474,35 @@ a:hover, a:focus, a:active {
   width: 24px;
 }
 
+#customAlert {
+  position: fixed;
+  inset-block-end: 5vh;
+  inset-inline: 0;
+  margin: auto;
+  padding: 1.5rem;
+  border: 1px solid rgb(var(--clr-tint-10)/0.5);
+  border-radius: 0.8rem;
+  background-color: rgb(var(--clr-min)/0.75);
+  -webkit-backdrop-filter: blur(0.4rem);
+          backdrop-filter: blur(0.4rem);
+  font-size: var(--fnt-lg);
+  font-weight: 700;
+  text-align: center;
+  z-index: 50000;
+}
+#customAlert.error {
+  border-color: rgb(var(--clr-alert)/0.5);
+}
+#customAlert.warn {
+  border-color: rgb(var(--clr-warn)/0.5);
+}
+#customAlert.good {
+  border-color: rgb(var(--clr-clear)/0.5);
+}
+#customAlert.hide {
+  animation: hideAlert 1s forwards;
+}
+
 /* _commons.scss */
 /* _headers.scss */
 #topMenu {
@@ -497,6 +536,13 @@ a:hover, a:focus, a:active {
   background-color: transparent;
   color: inherit;
   cursor: pointer;
+  transition: 0.15s;
+}
+#btnSettings:hover {
+  background-color: rgb(var(--clr-tint-75));
+}
+#btnSettings:hover > .icons {
+  animation: gearRoll 0.5s ease-out forwards;
 }
 
 #secInput > h1 {
@@ -607,26 +653,34 @@ a:hover, a:focus, a:active {
 
 /* _headers.scss */
 /* _mainPage.scss */
-#modalUserSettings {
-  position: fixed;
-  inset: 0;
-  margin: auto;
-  width: 16rem;
-  height: 16rem;
-  border: 1px solid rgb(var(--clr-surface-75));
-  border-radius: 0.4rem;
-  background-color: rgb(var(--clr-surface-100));
-}
-#modalUserSettings::backdrop {
-  -webkit-backdrop-filter: blur(0.4rem);
-          backdrop-filter: blur(0.4rem);
-}
-
 #todoList {
   display: flex;
   flex-flow: column nowrap;
   gap: 0.8rem;
   padding-block: 1.2rem;
+}
+
+.empty-list {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  height: 12rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+.empty-list > .big-icon {
+  width: 3rem;
+  fill: rgb(var(--clr-surface-10));
+  opacity: 0.3;
+}
+.empty-list > p {
+  font-size: var(--fnt-xl);
+  font-weight: 100;
+  opacity: 0.5;
 }
 
 .todo-item {
@@ -640,6 +694,9 @@ a:hover, a:focus, a:active {
 }
 .todo-item:hover {
   background-color: rgb(var(--clr-surface-75));
+}
+.todo-item:hover .todo-button-container button {
+  background-color: rgb(var(--clr-surface-10));
 }
 .todo-item[data-item-imp=important] {
   background-color: black;
@@ -680,6 +737,10 @@ a:hover, a:focus, a:active {
   display: none;
   width: 0.8rem;
 }
+.button-todo-item-done:disabled {
+  background-color: rgb(var(--clr-surface-50));
+  cursor: not-allowed;
+}
 
 .todo-item-aligner {
   flex: 1;
@@ -690,22 +751,12 @@ a:hover, a:focus, a:active {
 
 .todo-label-container {
   flex: 1;
-}
-
-.todo-status {
-  display: none;
-  position: absolute;
-  inset-block-start: 0.4rem;
-  inset-inline-end: 0.4rem;
-  color: rgb(var(--clr-warn));
-}
-.todo-status > .icons {
-  width: 1rem;
+  position: relative;
 }
 
 .todo-label {
   flex: 1;
-  line-height: 1.4;
+  line-height: 1.6;
 }
 .todo-label[contenteditable] {
   display: flex;
@@ -723,6 +774,42 @@ a:hover, a:focus, a:active {
   outline: 0.15rem solid rgb(var(--clr-tint-25)/0.25);
 }
 
+.todo-edit-legends {
+  display: none;
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: 0.6rem;
+  margin-block: auto;
+  height: -moz-fit-content;
+  height: fit-content;
+  pointer-events: none;
+}
+.todo-edit-legends > .legends-keys {
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.2rem;
+  background-color: rgb(var(--clr-surface-75));
+  font-size: 0.6rem;
+}
+
+.todo-item:has([contenteditable]) .todo-edit-legends {
+  display: initial;
+}
+.todo-item:has([contenteditable]) .todo-button-container {
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.todo-status {
+  display: none;
+  position: absolute;
+  inset-block-start: 0.4rem;
+  inset-inline-end: 0.4rem;
+  color: rgb(var(--clr-warn));
+}
+.todo-status > .icons {
+  width: 1rem;
+}
+
 .todo-button-container {
   margin-inline-start: auto;
 }
@@ -730,9 +817,13 @@ a:hover, a:focus, a:active {
   padding: 0.4rem;
   border: 0;
   border-radius: 0.4rem;
-  background-color: rgb(var(--clr-surface-10));
+  background-color: rgb(var(--clr-surface-75));
   transition: 0.15s;
   cursor: pointer;
+}
+.todo-button-container button:hover {
+  background-color: rgb(var(--clr-theme)) !important;
+  color: rgb(var(--clr-tint-100));
 }
 .todo-button-container button > .icons {
   width: 0.8rem;
@@ -740,8 +831,137 @@ a:hover, a:focus, a:active {
 
 /* _mainPage.scss */
 /* _subPages.scss */
+#modalUserSettings {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(100% - 1.6rem, 24rem);
+  height: -moz-fit-content;
+  height: fit-content;
+  border: 1px solid rgb(var(--clr-theme)/0.1);
+  border-radius: 0.4rem;
+  background-color: rgb(var(--clr-surface-100));
+  box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.25);
+  color: rgb(var(--clr-max));
+}
+#modalUserSettings::backdrop {
+  background-color: rgb(var(--clr-surface-100)/0.5);
+}
+
+#modalTitle {
+  padding: 0.8rem;
+  font-size: var(--fnt-title-sm);
+  font-weight: 900;
+}
+
+#modalContent {
+  padding: 0.8rem;
+  border-block: 1px solid rgb(var(--clr-theme)/0.1);
+}
+
+.modal-section-title {
+  margin-block-end: 0.8rem;
+  font-size: var(--fnt-lg);
+  font-weight: 700;
+}
+
+.modal-section-content {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.4rem;
+  margin-inline-start: 0.2rem;
+  padding-block: 0.2rem;
+  padding-inline-start: 0.6rem;
+  border-inline-start: 0.2rem solid rgb(var(--clr-tint-75)/0.5);
+}
+
+.modal-section-description {
+  color: rgb(var(--clr-max)/0.5);
+}
+
+.modal-label-user-name {
+  color: rgb(var(--clr-max));
+  font-weight: 900;
+}
+
+#txtUserName {
+  padding-inline: 0.4rem;
+  width: 100%;
+  height: 1.8rem;
+  border: 1px solid rgb(var(--clr-surface-10)/0.2);
+  border-radius: 0.4rem;
+  background-color: rgb(var(--clr-min)/0.2);
+  color: rgb(var(--clr-max));
+  transition: 0.15s;
+}
+#txtUserName:focus {
+  border-color: rgb(var(--clr-tint-25));
+  background-color: rgb(var(--clr-min)/0.5);
+  outline: 0.15rem solid rgb(var(--clr-tint-25)/0.25);
+}
+
+#modalButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  padding: 0.6rem 0.8rem;
+}
+#modalButtonContainer button {
+  padding-inline: 1rem;
+  height: 1.8rem;
+  border: 0;
+  border-radius: 0.4rem;
+  background-color: rgb(var(--clr-theme));
+  color: rgb(var(--clr-surface-100));
+  font-weight: 900;
+  transition: 0.15s;
+  cursor: pointer;
+}
+#modalButtonContainer button:hover {
+  background-color: rgb(var(--clr-tint-75));
+  color: rgb(var(--clr-max));
+}
+
 /* _subPages.scss */
 /* _footers.scss */
+#footPrimary {
+  position: sticky;
+  inset-block-end: 0;
+  inset-inline: 0;
+  padding-block: 1rem;
+  border-block-start: 1px solid rgb(var(--clr-theme)/0.1);
+  background-color: rgb(var(--clr-surface-100)/0.5);
+  -webkit-backdrop-filter: blur(0.4rem);
+          backdrop-filter: blur(0.4rem);
+  z-index: 49999;
+}
+
+.info-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-labels {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.info-labels:first-child > span {
+  background-color: rgb(var(--clr-theme));
+}
+.info-labels:last-child > span {
+  background-color: rgb(var(--clr-clear));
+}
+.info-labels > span {
+  display: block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 50rem;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: var(--fnt-sm);
+  font-weight: 900;
+}
+
 /* _footers.scss */
 /* _buttons.scss */
 /* _buttons.scss */
