@@ -1,4 +1,4 @@
-## devcourse-project-01
+## Project MyLittleThings ✔️
 # 2024 데브코스 1기 / 팀 프로젝트 01 - To-Do List 만들기
 FE2 - 2팀 : 김창완, 노준희, 방정배, 최윤성, 추원호
 
